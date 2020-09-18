@@ -26,6 +26,7 @@ const addOne = (index) =>{
         <div className="counter-class" >
             {count.map((el, i)=>
                 <div key={i}>
+
                 <h1>{el}</h1>
                     <button onClick={()=> addOne(i)}>+</button>
                     <button onClick={()=> minusOne(i)}>-</button>
