@@ -8,7 +8,7 @@ function App() {
     // ADD BOX
     const addCounter = () =>{
         let a = [...box];
-        a.push(1);
+        a.push(0);
         setBox(a);
     }
 
@@ -40,7 +40,6 @@ function App() {
         const a = [...box];
         setBox(a.filter((el, i) => index !== i));
     }
-
 
     return (
     <div className="container" >
