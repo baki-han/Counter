@@ -4,33 +4,48 @@ import Counter from "./components/Counter";
 
 function App() {
 
-
-    let arr = [];
-    const [box, setBox] = useState(arr);
-
+    const [box, setBox] = useState([]);
     // ADD BOX
     const addCounter = () =>{
         let a = [...box];
-        a.push(0);
+        a.push(1);
         setBox(a);
-        console.log(box)
     }
-
 
     // REMOVE BOX
-
     const removeCounter = () =>{
-        box.pop();
-        arr = [...box];
+        let arr2 = [...box];
+        arr2.pop();
+        setBox(arr2);
+    }
+
+    const addOne = (index) =>{
+        const arr = [...box];
+        arr[index] += 1;
         setBox(arr);
-        console.log(box)
+    }
+    const minusOne = (index) =>{
+        const arr = [...box];
+        arr[index] -= 1;
+        setBox(arr);
+    }
+
+    const setToZero = (index) =>{
+        const arr = [...box];
+        arr[index] = 0;
+        setBox(arr);
+    }
+
+    const removeBox = (index)=>{
+        const a = [...box];
+        setBox(a.filter((el, i) => index !== i));
     }
 
 
-  return (
+    return (
     <div className="container" >
      <Top onClick={addCounter} onClick2={() => box.length > 0 ? removeCounter() : alert('Empty')}/>
-     <Counter box={box} key={Math.random()}/>
+     <Counter box={box} key={Math.random()} addOne={addOne} minusOne={minusOne} setToZero={setToZero} removeBox={removeBox}/>
     </div>
   );
 }
